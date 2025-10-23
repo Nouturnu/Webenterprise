@@ -1,0 +1,615 @@
+/* =======================================================
+    PENGATURAN GLOBAL & DASAR
+======================================================= */
+:root {
+    /* Variabel warna dan properti untuk konsistensi */
+    --primary-gradient: linear-gradient(90deg, #4a0e4e, #0d82c5);
+    --button-color: #0d6efd;
+    --text-dark: #212529;
+    --text-light: #5f5f5f;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --border-radius-card: 15px;
+    --border-radius-button: 50px;
+}
+
+/* Mengatur box-sizing agar padding tidak merusak layout */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Efek scroll halus saat klik anchor link */
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 90%;
+    max-width: 1140px; /* Batas lebar maksimal */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+.content-section {
+    padding: 80px 0;
+}
+
+/* =======================================================
+    GAYA TOMBOL (BUTTONS)
+======================================================= */
+.btn {
+    padding: 12px 30px;
+    border-radius: var(--border-radius-button);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: var(--button-color);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+.btn-tertiary {
+    /* Digunakan untuk tombol 'Lokasi Kami' di versi footer sebelumnya */
+    /* Bisa dihapus jika tidak dipakai lagi */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: var(--white);
+}
+.btn-tertiary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Tombol 'outline' untuk LAINNYA */
+.btn.btn-outline {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: var(--text-light);
+    padding: 10px 40px;
+}
+
+.btn.btn-outline:hover {
+    background-color: #f0f0f0;
+    border-color: #bbb;
+}
+
+/* =======================================================
+    HEADER
+======================================================= */
+header {
+    background: var(--primary-gradient);
+    padding: 10px 0;
+    color: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.logo img {
+    height: 45px;
+    margin-right: 12px;
+}
+
+nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding-bottom: 5px; /* Jarak untuk garis bawah */
+}
+
+/* Garis bawah untuk link aktif */
+nav ul li a.active {
+    color: #f0f0f0;
+}
+nav ul li a.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--white);
+    margin-top: 4px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.search-bar input {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    color: var(--white);
+    padding: 8px 15px;
+    border-radius: var(--border-radius-button);
+    width: 220px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+header .btn-primary {
+    margin-left: 0;
+}
+
+/* =======================================================
+    SECTIONS UNTUK HALAMAN HOME (home.blade.php)
+======================================================= */
+
+/* --- HERO SECTION --- */
+.hero-section {
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.hero-content {
+    background: linear-gradient(90deg, rgba(62, 14, 100, 0.9), rgba(13, 130, 197, 0.8));
+    padding: 40px 50px;
+    color: var(--white);
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.hero-content h1 {
+    font-size: 38px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+/* --- ABOUT SECTION (VERSI SEDERHANA DI HOMEPAGE) --- */
+.about-homepage {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.about-homepage .section-title {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.about-homepage p {
+    font-size: 18px;
+    color: var(--text-light);
+    line-height: 1.8;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+/* --- SERVICES SECTION --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.service-card {
+    height: 250px;
+    border-radius: var(--border-radius-card);
+    background-size: cover;
+    background-position: center;
+    position: relative; /* Kanvas untuk lapisan gradasi */
+    overflow: hidden;
+    color: var(--white);
+    display: flex;
+    align-items: flex-end; /* Posisikan kontainer teks di bawah */
+    transition: transform 0.3s ease;
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradasi ungu ke biru transparan dari sisi kiri */
+    background: linear-gradient(to right, rgba(74, 14, 78, 0.8), rgba(13, 130, 197, 0.4));
+    z-index: 1; /* Posisikan gradasi di bawah teks */
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+}
+
+.service-card-overlay {
+    width: 100%;
+    padding: 25px;
+    position: relative; /* Posisikan kontainer teks */
+    z-index: 2; /* Pastikan teks berada di atas lapisan gradasi */
+}
+
+.service-card h3 {
+    margin: 0;
+    font-size: 22px;
+}
+
+/* --- PARTNERS SECTION (MITRA KAMI) --- */
+.partner-logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 kolom logo */
+    gap: 25px;
+    margin-top: 50px;
+    margin-bottom: 60px;
+}
+
+.partner-logo-card {
+    background-color: var(--white);
+    border: 1px solid #e9ecef;
+    border-radius: var(--border-radius-card);
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    transition: box-shadow 0.3s ease;
+}
+
+.partner-logo-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.partner-logo-card img {
+    max-width: 100%;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+.counseling-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    background: var(--primary-gradient);
+    color: var(--white);
+    padding: 30px 50px;
+    border-radius: var(--border-radius-card);
+}
+
+.counseling-banner h3 {
+    margin: 0 0 5px 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.counseling-banner p {
+    margin: 0;
+    opacity: 0.9;
+}
+
+.counseling-banner .btn-secondary {
+    flex-shrink: 0;
+    padding: 12px 24px;
+    border-width: 1px;
+}
+
+.counseling-banner .arrow {
+    margin-left: 8px;
+    font-size: 12px;
+}
+
+/* --- ARTICLES SECTION (ARTIKEL TERBARU) --- */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+    gap: 35px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.article-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text-dark);
+    display: block;
+    border: 1px solid #e9ecef;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.article-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+}
+
+.article-content {
+    padding: 25px 20px;
+}
+
+.article-content h3 {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: #444;
+}
+
+/* =======================================================
+    BAGIAN KONTAK (SEBELUM FOOTER) - PERBAIKAN DESAIN
+======================================================= */
+.contact-section {
+    padding: 80px 0;
+    background-color: var(--white); /* Latar belakang putih */
+    border-top: 1px solid #e9ecef; /* Garis pemisah tipis */
+    text-align: center; /* Konten rata tengah */
+}
+
+/* Judul "HUBUNGI KAMI" */
+.contact-section .section-title.contact-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+/* Judul "KANTOR PUSAT" */
+.contact-section h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Teks Alamat & Kontak */
+.contact-section p {
+    color: var(--text-light);
+    line-height: 1.7;
+    font-size: 16px;
+    margin: 5px 0;
+    max-width: 600px; /* Batasi lebar teks alamat */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Kontainer untuk Tombol */
+.contact-buttons {
+    margin-top: 30px;
+}
+
+/* Jarak antar tombol */
+.contact-buttons a {
+    margin: 5px 10px;
+}
+
+/* Tombol LOKASI KAMI (Gradien) */
+.btn-tertiary {
+    background: var(--primary-gradient);
+    color: var(--white);
+    border: none;
+    padding: 12px 35px; /* Sesuaikan padding */
+}
+
+/* Tombol KIRIM PESAN (Outline Ungu) */
+.btn.btn-outline-contact {
+    background-color: transparent;
+    border: 1px solid var(--contact-button-border);
+    color: var(--contact-button-border);
+    padding: 11px 35px; /* Sesuaikan padding */
+}
+.btn.btn-outline-contact:hover {
+    background-color: var(--contact-button-border);
+    color: var(--white);
+}
+
+
+/* =======================================================
+    FOOTER (HANYA COPYRIGHT) - PERBAIKAN DESAIN
+======================================================= */
+.site-footer {
+    background: var(--primary-gradient);
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 25px 0;
+    font-size: 14px;
+}
+
+.site-footer p {
+    margin: 0;
+    opacity: 0.8;
+}
+/* =======================================================
+ STYLE UNTUK HALAMAN INTERNAL (TENTANG KAMI, LAYANAN, DLL)
+=======================================================
+*/
+
+/* Gaya untuk Hero Image di Halaman Internal */
+.page-hero {
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    position: relative;
+}
+
+.page-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradasi ungu ke transparan */
+    background: linear-gradient(to right, rgba(74, 14, 78, 0.8), rgba(74, 14, 78, 0.2)); 
+    z-index: 1; /* Pastikan lapisan gradasi ada di bawah teks */
+}
+
+
+.page-hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+/* Kontainer utama untuk konten halaman internal */
+.about-page-content {
+    max-width: 900px; /* Batasi lebar konten */
+    margin: 0 auto; /* Posisikan di tengah */
+}
+
+/* Gaya untuk Konten Profil */
+.profile-title {
+    text-align: left;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    border-bottom: 3px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.profile-text {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+/* Grid untuk dua gambar */
+.profile-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.profile-image-grid img {
+    width: 100%;
+    border-radius: var(--border-radius-card);
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Gaya untuk Visi & Misi */
+.vision-mission-section {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    text-align: left;
+}
+
+.vision-item h3, .mission-item h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.vision-item p, .mission-item p {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+

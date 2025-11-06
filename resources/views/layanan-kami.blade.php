@@ -1,26 +1,22 @@
-{{-- 
-    Langkah 1: Kita pakai "Sampul" (Header & Footer)
-    dari file /layouts/app.blade.php 
---}}
 @extends('layouts.app')
 
-{{-- 
-    Langkah 2: Kita isi "slot" konten yang kosong
-    dengan semua HTML khusus untuk halaman ini.
---}}
 @section('content')
 
-    <!-- Bagian 1: Konten Halaman Layanan Kami -->
+    <!-- Bagian 1: Hero Image Halaman "Layanan Kami" -->
+    <section class="page-hero" style="background-image: url('{{ asset('images/pexels-photo-3184296.jpeg') }}');">
+        <div class="container">
+            <h1>LAYANAN KAMI</h1>
+        </div>
+    </section>
+
+    <!-- Bagian 2: Konten Halaman Layanan Kami -->
     <section class="content-section">
         <div class="container text-center">
-
-            <!-- Judul Halaman -->
-            <h2 class="section-title">Layanan Kami</h2>
-
+            
             <!-- 
                 Grid untuk Kartu Layanan.
-                Ini adalah kode yang SAMA PERSIS dengan yang ada di home.blade.php.
-                Kita menggunakannya kembali di sini.
+                Judul h2 "Layanan Kami" yang sebelumnya ada di sini, sudah dihapus
+                karena judulnya sudah ada di hero section di atas.
             -->
             <div class="services-grid">
                 <!-- Kartu 1 -->

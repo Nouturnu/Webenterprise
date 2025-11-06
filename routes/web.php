@@ -1,23 +1,34 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
-// Rute ini untuk Halaman Utama (http://localhost:8000)
-// Ini sudah ada
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+*/
+
+// Rute Halaman Utama (sudah ada)
 Route::get('/', function () {
     return view('home');
 });
 
-// --- TAMBAHKAN KODE BARU DI BAWAH INI ---
-
-// Rute ini untuk Halaman "Tentang Kami" (http://localhost:8000/tentang-kami)
-// Ini memberitahu Laravel untuk mencari file bernama 'tentang-kami.blade.php'
+// Rute Halaman "Tentang Kami" (sudah ada)
 Route::get('/tentang-kami', function () {
     return view('tentang-kami');
 });
 
-// (Kita siapkan juga untuk halaman 'Layanan Kami' nanti)
+// Rute Halaman "Layanan Kami" (sudah ada)
 Route::get('/layanan-kami', function () {
     return view('layanan-kami');
 });
 
+// Rute Halaman "Artikel" (sudah ada)
+Route::get('/artikel', function () {
+    return view('artikel');
+});
+
+// Rute Halaman Kontak (GET & POST)
+Route::get('/hubungi-kami', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/hubungi-kami', [ContactController::class, 'store'])->name('contact.store');
